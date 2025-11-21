@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單確認 - 販賣機付款系統</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-logo">VENDING PAY</div>
+        </header>
+
+        <!-- 訂單資訊區塊 -->
+        <section class="section">
+            <h1 class="page-title">訂單確認</h1>
+
+            <div class="order-info">
+                <h2 class="section-title">訂單資訊</h2>
+
+                <!-- 商品清單 -->
+                <div class="product-list">
+                    <div class="product-item">
+                        <span class="product-name">可口可樂</span>
+                        <span class="product-detail">x1</span>
+                        <span class="product-price">NT$ 25</span>
+                    </div>
+                    <div class="product-item">
+                        <span class="product-name">洋芋片</span>
+                        <span class="product-detail">x1</span>
+                        <span class="product-price">NT$ 35</span>
+                    </div>
+                </div>
+
+                <!-- 總金額 -->
+                <div class="total-amount">
+                    <span class="total-label">總金額</span>
+                    <span class="total-price">NT$ 60</span>
+                </div>
+
+                <!-- 販賣機編號 -->
+                <div class="machine-id">販賣機編號: VM-TPE-001</div>
+            </div>
+        </section>
+
+        <!-- 發票資訊區塊 -->
+        <section class="section">
+            <h2 class="section-title">發票資訊</h2>
+
+            <div class="form-group">
+                <label class="form-label">發票類型</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="invoiceType" value="personal" checked>
+                        <span>個人</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="invoiceType" value="company">
+                        <span>公司</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 個人發票選項 -->
+            <div id="personalInvoice" class="invoice-options">
+                <div class="form-group">
+                    <label class="form-label">載具類型</label>
+                    <select class="form-select" id="carrierType">
+                        <option value="">請選擇</option>
+                        <option value="mobile">手機條碼</option>
+                        <option value="certificate">自然人憑證</option>
+                        <option value="none">不索取</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="carrierIdGroup" style="display: none;">
+                    <label class="form-label">載具號碼</label>
+                    <input type="text" class="form-input" id="carrierId" placeholder="/ABC1234">
+                    <div class="error-message" id="carrierIdError"></div>
+                </div>
+
+                <div class="form-group" id="donationGroup" style="display: none;">
+                    <label class="form-label">捐贈碼（選填）</label>
+                    <input type="text" class="form-input" id="donationCode" placeholder="例: 9999">
+                    <div class="error-message" id="donationError"></div>
+                </div>
+            </div>
+
+            <!-- 公司發票選項 -->
+            <div id="companyInvoice" class="invoice-options" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">統一編號 *</label>
+                    <input type="text" class="form-input" id="taxId" placeholder="請輸入8碼統編" maxlength="8">
+                    <div class="error-message" id="taxIdError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">公司抬頭 *</label>
+                    <input type="text" class="form-input" id="companyTitle" placeholder="請輸入公司名稱" maxlength="60">
+                    <div class="error-message" id="companyTitleError"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 付款方式區塊 -->
+        <section class="section">
+            <h2 class="section-title">付款方式</h2>
+
+            <div class="payment-methods">
+                <label class="payment-option">
+                    <input type="radio" name="paymentMethod" value="credit" checked>
+                    <div class="payment-card">
+                        <img src="credit card logo.png" alt="信用卡" class="payment-icon-img">
+                        <span>信用卡</span>
+                    </div>
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="paymentMethod" value="linepay">
+                    <div class="payment-card">
+                        <img src="LINE-Pay(h)_W119_n.png" alt="LINE Pay" class="payment-icon-img">
+                        <span>LINE Pay</span>
+                    </div>
+                </label>
+            </div>
+        </section>
+
+        <!-- 操作按鈕 -->
+        <div class="action-bar">
+            <button type="button" class="btn-primary" id="confirmBtn">確認付款</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

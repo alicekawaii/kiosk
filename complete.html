@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>付款結果 - 販賣機付款系統</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-logo">VENDING PAY</div>
+        </header>
+
+        <div class="result-container" id="resultContainer">
+            <!-- 成功狀態 -->
+            <div id="successResult" style="display: none;">
+                <div class="result-icon success">✓</div>
+                <h1 class="result-title">付款成功</h1>
+
+                <div class="result-info">
+                    <div class="result-item">
+                        <span class="result-label">交易編號</span>
+                        <span class="result-value" id="transactionId">TXN20251106001</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">付款金額</span>
+                        <span class="result-value" id="paymentAmount">NT$ 60</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">付款方式</span>
+                        <span class="result-value" id="paymentMethod">信用卡</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">電子發票</span>
+                        <span class="result-value" id="invoiceNumber">AA12345678</span>
+                    </div>
+                </div>
+
+                <p class="countdown" id="countdown">
+                    <strong style="color: #06c755; font-size: 16px;">✓ 交易完成，請從販賣機取貨後關閉此頁面</strong>
+                </p>
+            </div>
+
+            <!-- 失敗狀態 -->
+            <div id="failureResult" style="display: none;">
+                <div class="result-icon error">✗</div>
+                <h1 class="result-title">付款失敗</h1>
+
+                <div class="result-info">
+                    <div class="result-item">
+                        <span class="result-label">失敗原因</span>
+                        <span class="result-value" id="errorReason">付款授權失敗，請確認卡片資訊</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">交易編號</span>
+                        <span class="result-value" id="failedTransactionId">TXN20251106001</span>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn-secondary" onclick="retryPayment()">重新付款</button>
+                    <button type="button" class="btn-secondary" onclick="cancelOrder()">取消訂單</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="modal.js"></script>
+    <script src="complete.js"></script>
+</body>
+</html>

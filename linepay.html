@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINE Pay 付款 - 販賣機付款系統</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 載入中狀態 -->
+        <div class="linepay-container" id="loadingState">
+            <img src="LINE-Pay(h)_W119_n.png" alt="LINE Pay" class="linepay-logo-img">
+            <h1 class="linepay-title">LINE Pay</h1>
+            <p class="linepay-status">正在連接 LINE Pay...</p>
+            <div class="loading-spinner"></div>
+        </div>
+
+        <!-- 付款確認狀態 -->
+        <div class="linepay-container" id="confirmState" style="display: none;">
+            <img src="LINE-Pay(h)_W119_n.png" alt="LINE Pay" class="linepay-logo-img">
+            <h1 class="linepay-title">LINE Pay</h1>
+
+            <!-- 訂單資訊 -->
+            <section class="section linepay-section">
+                <h2 class="section-title">訂單資訊</h2>
+                <div class="order-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">訂單編號</span>
+                        <span class="summary-value" id="orderId">TXN20251106001</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">販賣機編號</span>
+                        <span class="summary-value" id="machineId">VM-TPE-001</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span class="summary-label">付款金額</span>
+                        <span class="summary-value" id="totalAmount">NT$ 60</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 商品明細 -->
+            <section class="section linepay-section">
+                <h2 class="section-title">商品明細</h2>
+                <div class="product-list" id="productList">
+                    <div class="product-item">
+                        <span class="product-name">可口可樂</span>
+                        <span class="product-detail">x1</span>
+                        <span class="product-price">NT$ 25</span>
+                    </div>
+                    <div class="product-item">
+                        <span class="product-name">洋芋片</span>
+                        <span class="product-detail">x1</span>
+                        <span class="product-price">NT$ 35</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LINE Pay 模擬登入/確認 -->
+            <section class="section linepay-section">
+                <div class="linepay-notice">
+                    <p>⚠️ 這是模擬的 LINE Pay 付款頁面</p>
+                    <p>實際應用中會轉跳到 LINE Pay 官方頁面</p>
+                </div>
+
+                <div class="linepay-actions">
+                    <button type="button" class="btn-linepay" id="confirmPayBtn">
+                        <img src="LINE-Pay(h)_W119_n.png" alt="LINE Pay" class="linepay-btn-icon">
+                        確認付款 NT$ <span id="btnAmount">60</span>
+                    </button>
+                    <button type="button" class="btn-secondary" onclick="cancelPayment()">取消付款</button>
+                </div>
+            </section>
+
+            <!-- 倒數計時 -->
+            <div class="payment-timer">
+                <p>付款剩餘時間: <span id="timer">20:00</span></p>
+            </div>
+        </div>
+
+        <!-- 處理中狀態 -->
+        <div class="linepay-container" id="processingState" style="display: none;">
+            <img src="LINE-Pay(h)_W119_n.png" alt="LINE Pay" class="linepay-logo-img">
+            <h1 class="linepay-title">LINE Pay</h1>
+            <p class="linepay-status">付款處理中...</p>
+            <div class="loading-spinner"></div>
+            <p class="processing-note">請稍候，正在確認付款結果</p>
+        </div>
+    </div>
+
+    <script src="modal.js"></script>
+    <script src="linepay.js"></script>
+</body>
+</html>
